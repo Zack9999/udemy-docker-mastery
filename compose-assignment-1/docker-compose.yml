@@ -13,8 +13,8 @@ services:
   db:
     image: postgres:12.1
     environment: 
-      POSTGRES_PASSWORD: digi9876
-      POSTGRES_DB: drupal
-      POSTGRES_USER: user
+      - POSTGRES_PASSWORD=digi9876
+      - POSTGRES_DB=drupal
+      - POSTGRES_USER=user
     volumes: 
       - './db:/var/lib/postgresql/data'
