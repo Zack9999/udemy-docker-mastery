@@ -16,3 +16,5 @@ services:
       POSTGRES_PASSWORD: digi9876
       POSTGRES_DB: drupal
       POSTGRES_USER: user
+    volumes: 
+      - './db: /var/lib/postgresql/data'
