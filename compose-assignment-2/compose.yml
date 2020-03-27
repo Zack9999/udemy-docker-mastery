@@ -1,0 +1,32 @@
+# create your drupal and postgres config here, based off the last assignment
+version: '3.1'
+
+services: 
+  drupal:
+    image: drupal:8.2
+    ports: 
+      - '80:80'
+    networks:
+      - frontend
+    deploy:
+      replicas: 1
+      update_config:
+        parallelism: 2
+        delay: 10s
+      restart_policy:
+        condition: on-failure
+  postgres:
+    image: postgres:12.1
+    environment: 
+      - POSTGRES_PASSWORD=digi9876
+    networks:
+      - backend
+    volumes: 
+      - './db:/var/lib/postgresql/data'
+    deploy:
+      placement:
+        constraints: [node.role == manager]
+
+networks:
+  frontend:
+  backend:
