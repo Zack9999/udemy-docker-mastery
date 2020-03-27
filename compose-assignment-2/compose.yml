@@ -18,7 +18,9 @@ services:
   postgres:
     image: postgres:12.1
     environment: 
-      - POSTGRES_PASSWORD=digi9876
+      - POSTGRES_PASSWORD=/run/secrets/my_secret
+    secrets:
+      - my_secret
     networks:
       - backend
     volumes: 
@@ -26,6 +28,10 @@ services:
     deploy:
       placement:
         constraints: [node.role == manager]
+
+secrets:
+  my_secret:
+    external: true
 
 networks:
   frontend:
