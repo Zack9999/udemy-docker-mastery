@@ -18,7 +18,7 @@ services:
   postgres:
     image: postgres:12.1
     environment: 
-      - POSTGRES_PASSWORD=/run/secrets/my_secret
+      - POSTGRES_PASSWORD_FILE=/run/secrets/my_secret
     secrets:
       - my_secret
     networks:
